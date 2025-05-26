@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Add/Remove Example</title>
+</head>
+<body>
+
+  <h2>My To-Do List</h2>
+  <ul id="todoList">
+    <li>Learn HTML</li>
+    <li>Learn CSS</li>
+  </ul>
+
+  <input type="text" id="newItem" placeholder="New item">
+  <button onclick="addItem()">Add Item</button>
+  <button onclick="removeLastItem()">Remove Last Item</button>
+
+  <script>
+    function addItem() {
+      const ul = document.getElementById("todoList");
+      const newItemText = document.getElementById("newItem").value;
+      if (newItemText.trim() !== "") {
+        const li = document.createElement("li"); // Create new list item
+        li.innerText = newItemText;              // Set its text
+        ul.appendChild(li);                      // Add to the list
+        document.getElementById("newItem").value = ""; // Clear input
+      }
+    }
+
+    function removeLastItem() {
+      const ul = document.getElementById("todoList");
+      if (ul.lastElementChild) {
+        ul.removeChild(ul.lastElementChild); // Remove the last item
+      }
+    }
+  </script>
+
+</body>
+</html>
